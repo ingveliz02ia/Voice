@@ -8,10 +8,16 @@ from pprint import pprint
 load_dotenv()
 class TwilioClient:
     def __init__(self):
-        self.client = Client(
-           os.environ["TWILIO_ACCOUNT_ID"], os.environ["TWILIO_AUTH_TOKEN"]
-        )
-
+        #os.environ["TWILIO_ACCOUNT_ID"], os.environ["TWILIO_AUTH_TOKEN"]
+        account_sid = os.environ.get("TWILIO_ACCOUNT_ID")
+        auth_token = os.environ.get("TWILIO_AUTH_TOKEN")
+        if not account_sid or not auth_token:
+            raise ValueError("Las credenciales de Twilio no están configuradas en las variables de entorno.")
+        #self.client = Client(    )
+        print(f"TWILIO_ACCOUNT_ID: {account_sid}")
+        print(f"TWILIO_AUTH_TOKEN: {auth_token}")
+        self.client = Client(account_sid, auth_token)
+        
     def end_call(self, sid):
         try:
             call = self.client.calls(sid).update(
