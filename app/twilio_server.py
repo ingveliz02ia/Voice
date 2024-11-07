@@ -5,7 +5,7 @@ import os
 import urllib
 from pprint import pprint
 
-load_dotenv()
+#load_dotenv()
 class TwilioClient:
     def __init__(self):
         #os.environ["TWILIO_ACCOUNT_ID"], os.environ["TWILIO_AUTH_TOKEN"]
