@@ -113,7 +113,7 @@ async def twilio_voice_webhook(request: Request, agent_id_path: str):
 
         # ----------------------------
         # DETECT ANSWERING MACHINE
-        ----------------------------
+        # ----------------------------
 
         if "AnsweredBy" in post_data and post_data["AnsweredBy"] == "machine_start":
             call = twilio_client.get_call_status(post_data["CallSid"])
